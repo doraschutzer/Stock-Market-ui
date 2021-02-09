@@ -1,0 +1,40 @@
+<app-header [title]="'Home'"></app-header>
+
+<ion-content>
+  <ion-card *ngFor="let action of actions">
+    <ion-card-header [color]="action.color" (click)="collapseUpDown(action)">
+      <ion-card-title>{{ action.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="action.collapseCard" >
+
+      <ion-item *ngIf="!loginService.userConnected.userActions">
+        <ion-label>-</ion-label>
+      </ion-item>
+      <div *ngFor="let userActions of loginService.userConnected.userActions">
+        <div *ngIf="userActions.actionId == action.id">
+          <ul *ngFor="let userAction of userActions.actions">
+            <li>
+              <p>Número da Ação: {{ userAction.id }} </p>
+              <p>Quantidade: {{ userAction.amount }}</p>
+              <p>Valor: {{ userAction.value | currency:'BRL':true }}</p>
+              <ion-button size="small" (click)="sendAction(userAction.amount, userAction.id, userActions.orders, action.id)">Vender</ion-button>
+            </li>
+            <li>
+              <ion-text color="primary">Valor Total: {{ userActions.totalValue | currency:'BRL':true }}</ion-text>
+            </li>
+          </ul>
+          <ion-text color="primary" *ngIf="userActions.orders">Ordens:</ion-text>
+          <ul *ngFor="let order of userActions.orders">
+            <li>
+              <p>Número da Ação: {{ order.userActionId }} </p>
+              <p>Tipo: {{ order.type }}</p>
+              <p>Quantidade: {{ order.amount }}</p>
+            </li>
+          </ul>
+          <ion-button color="success" size="small" (click)="setActionStorage(action, userActions.actions.length)">Compra</ion-button>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

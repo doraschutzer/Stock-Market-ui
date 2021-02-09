@@ -1,0 +1,30 @@
+<app-header [title]="'Login'"></app-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin">
+
+    <ion-item class="ion-margin-top" lines="none" lines="full">
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input  class="form-control" type="email" required [(ngModel)]="user.email" #email="ngModel" ></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="( email.invalid && (email.dirty || email.touched) )">
+        <p>* E-mail obrigatório.</p>
+    </ion-text>
+
+    <ion-item class="ion-margin-top" lines="none" lines="full">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input  class="form-control" type="password" required [(ngModel)]="user.password" #password="ngModel"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="( password.invalid && (password.dirty || password.touched) )">
+      <p>* Senha obrigatória.</p>
+    </ion-text>
+    <ion-text color="danger" *ngIf="incorrectPassword">
+      <p>* Senha e/ou e-mail incorretos.</p>
+    </ion-text>
+
+    <ion-button color="success" class="pattern-button ion-margin-top ion-margin-start ion-margin-end" (click)="login()" expand="block">
+      Entrar
+    </ion-button>
+
+  </ion-list>
+</ion-content>

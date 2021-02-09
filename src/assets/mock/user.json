@@ -1,0 +1,49 @@
+[
+  {
+    "id": 1,
+    "email": "maria@hotmail.com",
+    "name": "Maria",
+    "password": "123maria",
+    "userActions": [
+      {
+        "actionId": 1,
+        "actions": [{
+          "id": 1,
+          "amount": 2,
+          "value": 120
+        }],
+        "orders": [{
+          "type": "VENDA",
+          "userActionId": 1,
+          "amount": 2
+        }],
+        "totalValue": 240
+      },
+      {
+        "actionId": 2,
+        "actions": [
+          {
+            "id": 2,
+            "amount": 2,
+            "value": 120
+          },
+          {
+            "id": 3,
+            "amount": 1,
+            "value": 150
+          }
+        ],
+        "totalValue": 390
+      },
+      {
+        "actionId": 3,
+        "actions": [{
+          "id": 4,
+          "amount": 2,
+          "value": 290
+        }],
+        "totalValue": 580
+      }
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Ação 1",
+    "color": "primary",
+    "maxValue": 350,
+    "minValue": 100
+  },
+  {
+    "id": 2,
+    "name": "Ação 2",
+    "color": "success",
+    "maxValue": 350,
+    "minValue": 100
+  },
+  {
+    "id": 3,
+    "name": "Ação 3",
+    "color": "danger",
+    "maxValue": 350,
+    "minValue": 100
+  }
+]

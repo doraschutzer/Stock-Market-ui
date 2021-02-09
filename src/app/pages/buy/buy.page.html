@@ -1,0 +1,39 @@
+<app-header [title]="'Comprar Ação'"></app-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>Comprar {{ actionInfo.action.name }}</h3>
+        <p>(Vl. Máx: {{ actionInfo.action.maxValue | currency:'BRL':true}} - Vl. Min: {{ actionInfo.action.minValue | currency:'BRL':true}})</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label>Quantidade: </ion-label>
+      <ion-input type="number" class="form-control" required placeholder="0" [min]="1" formControlName="amount"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="( form.get('amount').invalid && (form.get('amount').dirty || form.get('amount').touched) )">
+      <ion-text color="danger">
+        <p>* Quantidade obrigatória.</p>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Valor:</ion-label>
+      <input currencyMask placeholder="Valor" required class="form-control" formControlName="value" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+    </ion-item>
+    <ion-item *ngIf="( form.get('value').invalid && (form.get('value').dirty || form.get('value').touched) )">
+      <ion-text color="danger">
+        <p>* Valor obrigatório ou incorreto.</p>
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-button color="warning" (click)="back()">Voltar</ion-button>
+      <ion-button (click)="buy()">Comprar</ion-button>
+    </ion-item>
+  </form>
+
+</ion-content>
